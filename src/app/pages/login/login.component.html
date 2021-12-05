@@ -1,0 +1,63 @@
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+
+
+<div class="ui two column doubling stackable grid container">
+    <div class="column">
+        <h2 class="ui red header">
+            <i class="medkit icon"></i>
+            <div class="content">
+                Easy Farma
+                <div class="sub header">Busca tus medicamentos más cerca y a mejor precio.</div>
+            </div>
+        </h2>
+
+        <form class="ui large form">
+            <div class="ui center aligned stacked blue inverted segment">
+                <h2 class="ui icon header">
+                    <i class="user outline icon"></i>
+                    <div class="content">
+                        Iniciar Sesión
+                    </div>
+                </h2>
+
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        <input type="text" name="correo" placeholder="Correo" [(ngModel)]="u.correo" required maxlength="50">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="password" name="contrasena" placeholder="Contraseña" [(ngModel)]="u.contrasena" required maxlength="30">
+                    </div>
+                </div>
+
+                <div class="ui fluid large teal submit button" (click)="login()">Iniciar Sesión</div>
+
+                <div *ngIf="viewmsg" class="ui negative  message">
+                    <i class="close icon"></i>
+                    <div class="header">
+                        Hubo algunos errores con su envío.
+                    </div>
+                    <ul class="list" *ngFor="let item of msg">
+                        <li>{{ item }}</li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+
+        <div class=" ui message ">
+            Eres nuevo? <a [routerLink]="['/paciente']">Regístrate</a>
+        </div>
+    </div>
+
+    <div class="column ">
+        <img class="ui fluid image " src="assets/img/portada.jpg ">
+    </div>
+</div>

@@ -1,0 +1,116 @@
+<app-menu></app-menu>
+
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+
+
+<div class="ui grid stackable container">
+    <div class="four wide column">
+        <app-submenu></app-submenu>
+    </div>
+
+    <div class="twelve wide column">
+        <div class="ui stacked segment">
+            <form class="ui form">
+                <div class="ui form">
+                    <div class="three fields">
+                        <div class="field">
+                            <label>Cód. Medicamento</label>
+                            <input type="text" name="medicamento_id" [(ngModel)]="rd.medicamento_id" required>
+                        </div>
+                        <div class="field">
+                            <label>Des. Medicamento</label>
+                            <input type="text" name="medicamento_desc" [(ngModel)]="rd.medicamento_desc" required>
+                        </div>
+                        <div class="field">
+                            <label>Requiere Prescripción</label>
+                            <input type="checkbox" name="medicamento_pres" [(ngModel)]="rd.medicamento_pres">
+                        </div>
+                    </div>
+
+                    <div class="four fields">
+                        <div class="field">
+                            <label>Cantidad de Días</label>
+                            <input type="number" name="nro_dias" [(ngModel)]="rd.nro_dias" required>
+                        </div>
+                        <div class="field">
+                            <label>Frecuencia</label>
+                            <input type="number" name="frecuencia" [(ngModel)]="rd.frecuencia" required>
+                        </div>
+                        <div class="field">
+                            <label>Cantidad</label>
+                            <input type="number" name="cantidad" [(ngModel)]="rd.cantidad" required>
+                        </div>
+                        <div class="field">
+                            <label>UDM</label>
+                            <input type="text" name="udm" [(ngModel)]="rd.udm" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>Observación</label>
+                        <textarea rows="2" name="observaciones" [(ngModel)]="rd.observaciones"></textarea>
+                    </div>
+
+                    <div class="fields">
+                        <div class="sixteen wide field">
+                            <label>Adjuntar Receta Medica</label>
+                            <input type="file" name="foto" accept="image/*" (change)="selectFile($event)">
+                        </div>
+                    </div>
+
+                    <div class="fields">
+                        <div class="sixteen wide field">
+                            <button class="fluid ui positive button" (click)="registrar_recetadetalle()">Registrar</button>
+                        </div>
+                    </div>
+
+                    <div *ngIf="viewmsg" class="ui negative  message">
+                        <i class="close icon"></i>
+                        <div class="header">
+                            Hubo algunos errores con su envío.
+                        </div>
+                        <ul class="list" *ngFor="let item of msg">
+                            <li>{{ item }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="ui stacked segment">
+            <table class="ui selectable celled red table">
+                <thead>
+                    <tr>
+                        <th>Cód. Medicamento</th>
+                        <th>Des. Medicamento</th>
+                        <th>Requiere Prescripción</th>
+                        <th>Cantidad de Días</th>
+                        <th>Frecuencia</th>
+                        <th>Cantidad</th>
+                        <th>Observación</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let item of list_rd">
+                        <td>{{ item.medicamento_id }}</td>
+                        <td>{{ item.medicamento_desc }}</td>
+                        <td>{{ item.medicamento_pres }}</td>
+                        <td>{{ item.nro_dias }}</td>
+                        <td>{{ item.frecuencia }}</td>
+                        <td>{{ item.cantidad }} {{ item.udm }}</td>
+                        <td>{{ item.observaciones }}</td>
+                        <td>
+                            <a class="ui red button" href="/recetadtl/{{item.id}}">
+                                <i class="icon edit"></i> Editar
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

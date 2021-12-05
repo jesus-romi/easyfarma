@@ -1,0 +1,103 @@
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+
+
+
+<div class="ui grid container">
+    <h2 class="ui red header">
+        <i class="medkit icon"></i>
+        <div class="content">
+            Easy Farma
+            <div class="sub header">Registrarse</div>
+        </div>
+    </h2>
+</div>
+
+
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+
+<form class="ui large form">
+
+    <div class="ui two column doubling stackable grid container">
+        <div class="column">
+            <div class="ui stacked segment">
+                <div class="ui form">
+                    <div class="fields">
+                        <div class="sixteen wide field">
+                            <label>Nombres</label>
+                            <input type="text" name="nombre" [(ngModel)]="u.nombre" required maxlength="100">
+                        </div>
+                    </div>
+
+                    <div class="two fields">
+                        <div class="field">
+                            <label>Correo Electrónico</label>
+                            <input type="email" name="correo" [(ngModel)]="u.correo" required maxlength="50">
+                        </div>
+                        <div class="field">
+                            <label>Contraseña</label>
+                            <input type="password" name="contrasena" [(ngModel)]="u.contrasena" required maxlength="30">
+                        </div>
+                    </div>
+
+
+                    <div class="two fields">
+                        <div class="field">
+                            <label>N° Documento</label>
+                            <input type="text" name="nro_documento" [(ngModel)]="u.nro_documento" required maxlength="8">
+
+                        </div>
+                        <div class="field">
+                            <label>Fecha Nacimiento</label>
+                            <input type="date" name="fec_nacimiento" [(ngModel)]="u.fec_nacimiento" required>
+                        </div>
+                    </div>
+
+                    <div class="fields">
+                        <div class="fourteen wide field">
+                            <label>Dirección</label>
+                            <input type="text" name="direccion" [(ngModel)]="u.direccion">
+                        </div>
+                        <div class="two wide field">
+                            <label>&nbsp;</label>
+                            <button class="ui red icon button">
+                                <i class="map marker alternate icon"></i>
+                              </button>
+                        </div>
+                    </div>
+
+                    <div class="fields">
+                        <div class="sixteen wide field">
+                            <label>Seleccionar foto</label>
+                            <input type="file" name="foto" accept="image/*" (change)="selectFile($event)">
+                            <img class="ui medium rounded centered image" [src]="url">
+                        </div>
+                    </div>
+
+                    <div class="fields">
+                        <div class="sixteen wide field">
+                            <button class="fluid ui positive button" (click)="registrar_paciente()">Registrar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="viewmsg" class="ui negative  message">
+                    <i class="close icon"></i>
+                    <div class="header">
+                        Hubo algunos errores con su envío.
+                    </div>
+                    <ul class="list" *ngFor="let item of msg">
+                        <li>{{ item }}</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="column">
+        </div>
+    </div>
+</form>
+
+<a href="file:///C:\Users\jesus.TEC-391\Pictures\aa.PNG">Link 2</a>
